@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".player_layout">
+
+    <ImageView
+        android:id="@+id/btn_continue"
+        android:layout_width="49dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="23dp"
+        app:layout_constraintStart_toEndOf="@+id/btn_pause"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:srcCompat="@drawable/play_filled" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="49dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintStart_toEndOf="@+id/btn_play"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:srcCompat="@drawable/playerforward_filled" />
+
+    <ImageView
+        android:id="@+id/comment"
+        android:layout_width="36dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/download"
+        app:layout_constraintTop_toBottomOf="@+id/next_lyrics"
+        app:srcCompat="@drawable/pinglun" />
+
+    <ImageView
+        android:id="@+id/download"
+        android:layout_width="36dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/favorites"
+        app:layout_constraintTop_toBottomOf="@+id/next_lyrics"
+        app:srcCompat="@drawable/xiazai" />
+
+    <ImageView
+        android:id="@+id/way"
+        android:layout_width="36dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/next_lyrics"
+        app:srcCompat="@drawable/xunhuan" />
+
+    <ImageView
+        android:id="@+id/favorites"
+        android:layout_width="36dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/way"
+        app:layout_constraintTop_toBottomOf="@+id/next_lyrics"
+        app:srcCompat="@drawable/ico_shoucangjia" />
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="264dp"
+        android:layout_height="247dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="63dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back"
+        app:srcCompat="@android:mipmap/sym_def_app_icon" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="72dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:background="#FFFFFF"
+        android:text="@string/BACK"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="223dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="@string/songtitle"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/last_lyrics"
+        android:layout_width="259dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="76dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv" />
+
+    <TextView
+        android:id="@+id/now_lyrics"
+        android:layout_width="259dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="76dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/last_lyrics" />
+
+    <TextView
+        android:id="@+id/next_lyrics"
+        android:layout_width="259dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="76dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/now_lyrics" />
+
+    <ImageView
+        android:id="@+id/star"
+        android:layout_width="36dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/comment"
+        app:layout_constraintTop_toBottomOf="@+id/next_lyrics"
+        app:srcCompat="@drawable/dianzan" />
+
+    <SeekBar
+        android:id="@+id/sb"
+        android:layout_width="354dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="29dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comment" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="354dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="29dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sb">
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="#000000"
+            android:textSize="20dp"></TextView>
+
+        <TextView
+            android:id="@+id/tv_totla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="04:50"
+            android:textColor="#000000"
+            android:textSize="20dp">
+
+        </TextView>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/btn_play"
+        android:layout_width="49dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:srcCompat="@drawable/play_filled" />
+
+    <ImageView
+        android:id="@+id/btn_pause"
+        android:layout_width="49dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="181dp"
+        android:layout_marginTop="23dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_play"
+        app:srcCompat="@drawable/pause_filled" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="49dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:srcCompat="@drawable/playerback_filled" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
