@@ -95,8 +95,7 @@ public class MusicRvAdapter extends RecyclerView.Adapter<MusicRvAdapter.MusicRow
         public void bind(Music c) {
             this.songtitle.setText(c.getSongtitle());
             this.qingxidu.setText(c.getQingxidu());
-            //弃用本地图片的方式，改为从网络加载图片
-//            this.cover.setImageResource(c.getCover());
+
             Log.d("lala", c.getSongtitle() + "：准备从网络加载封面：" + c.getImage());
             Glide.with(context)
                     .load(c.getImage())
