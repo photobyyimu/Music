@@ -16,21 +16,16 @@
             android:theme="@style/AppTheme.Full">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MusicLab" />
-
         <service
             android:name=".MusicService"
             android:enabled="true"
             android:exported="true" />
-
         <activity
             android:name=".player_layout"
             android:theme="@style/AppTheme.Full">
-
         </activity>
         <activity android:name=".MainActivity" />
     </application>

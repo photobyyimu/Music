@@ -12,6 +12,19 @@ public class Music implements Serializable {
     private String singer;
     private String star;
 
+    @Override
+    public String toString() {
+        return "Music{" +
+                "songtitle='" + songtitle + '\'' +
+                ", qingxidu='" + qingxidu + '\'' +
+                ", image='" + image + '\'' +
+                ", url='" + url + '\'' +
+                ", id='" + id + '\'' +
+                ", singer='" + singer + '\'' +
+                ", star='" + star + '\'' +
+                '}';
+    }
+
     public String getSongtitle() {
         return songtitle;
     }
@@ -75,13 +88,11 @@ public class Music implements Serializable {
         Music music = (Music) o;
         return Objects.equals(songtitle, music.songtitle) &&
                 Objects.equals(qingxidu, music.qingxidu) &&
-                Objects.equals(image, music.image) &&
-                Objects.equals(url, music.url) &&
                 Objects.equals(singer, music.singer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(songtitle, qingxidu, image, url, singer);
+        return Objects.hash(songtitle, qingxidu, singer);
     }
 }

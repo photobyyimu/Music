@@ -1,6 +1,7 @@
 package cn.edu.scujcc.music;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -9,12 +10,14 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Message;
 
+import com.bumptech.glide.Glide;
+
 import java.util.Timer;
 import java.util.TimerTask;
-
 public class MusicService extends Service {
     private MediaPlayer player;
     private Timer timer;
+    private Context context;
     public MusicService() {
     }
 
@@ -54,6 +57,7 @@ public class MusicService extends Service {
         public void play(){
             try{
                 player.reset();
+
 
                 player=MediaPlayer.create(getApplicationContext(), R.raw.a1);//资源常量
 

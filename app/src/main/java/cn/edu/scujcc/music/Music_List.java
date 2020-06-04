@@ -43,7 +43,7 @@ public class Music_List extends AppCompatActivity {
         rvAdapter = new MusicRvAdapter(Music_List.this, p -> {
             //跳转到新界面，使用意图Intent
             Intent intent = new Intent(Music_List.this, player_layout.class);
-            //通过位置p得到当前频道channel，传递用户选中的频道到下一个界面
+            //通过位置p得到当前频道music，传递用户选中的频道到下一个界面
             Music c = lab.getMusic(p);
             intent.putExtra("music", c);
             startActivity(intent);

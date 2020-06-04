@@ -11,22 +11,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-/**
- * 频道数据源。
- * 使用了单例模式保证此类仅有一个对象。
- */
+
 public class MusicLab {
     //单例第1步
     private static MusicLab INSTANCE = null;
-
     private List<Music> data;
-
     //单例第2步
     private MusicLab() {
         //初始化空白列表
         data = new ArrayList<>();
-        //删除网络访问
-        //getData();
     }
 
     //单例第3步
@@ -37,28 +30,15 @@ public class MusicLab {
         return INSTANCE;
     }
 
-    /**
-     * 返回数据总数量。
-     *
-     * @return
-     */
     public int getSize() {
         return data.size();
     }
 
-    /**
-     * 返回指定位置的频道信息
-     *
-     * @param position 数据编号，从0开始
-     * @return position对应的频道对象
-     */
+
     public Music getMusic(int position) {
         return this.data.get(position);
     }
 
-    /**
-     * 访问网络得到真实数据，代替以前的test()方法
-     */
     public void getData(Handler handler) {
         //调用单例
         Retrofit retrofit = RetrofitClient.getInstance();
@@ -71,7 +51,7 @@ public class MusicLab {
             public void onResponse(Call<List<Music>> call,
                                    Response<List<Music>> response) {
                 if (null != response && null != response.body()) {
-                    Log.d("lala", "从阿里云得到的数据是：");
+                    Log.d("lala", "从服务器得到的数据是：");
                     Log.d("lala", response.body().toString());
                     data = response.body();
                     //发出通知
