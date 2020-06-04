@@ -2,6 +2,7 @@ package cn.edu.scujcc.music;
 
 import android.animation.ObjectAnimator;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
@@ -18,6 +19,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+
 public class player_layout extends AppCompatActivity implements View.OnClickListener {
     private ImageView iv_cover;
     private static SeekBar sb;
@@ -28,17 +31,24 @@ public class player_layout extends AppCompatActivity implements View.OnClickList
     private MyServiceConn myServiceConn;//连接实例
     private Intent intent;//全局的意图对象
     private  boolean isUnbind=false;//记录服务是否被解绑
-    public ObjectAnimator animator;
     private int num=0;
+    public ObjectAnimator animator;
+    private Music music;
+
+    private TextView song_title,qingxidu,singer;
+    private ImageView iv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_layout);
+        music =(Music)getIntent().getSerializableExtra("music");
+
         initView();
+        updateUI();
     }
     private  void initView(){
-      iv_cover=findViewById(R.id.iv);
-      animator=ObjectAnimator.ofFloat(iv_cover,"rotation", 0f,360.0f);
+        iv_cover=findViewById(R.id.iv);
+        animator=ObjectAnimator.ofFloat(iv_cover,"rotation", 0f,360.0f);
         animator.setDuration(1000);
         animator.setInterpolator(new LinearInterpolator());
         animator.setRepeatCount(-1);
@@ -48,9 +58,9 @@ public class player_layout extends AppCompatActivity implements View.OnClickList
             //滑动时的处理
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-             if(progress==seekBar.getMax()){   //滑动到最大值的时，结束动画
-                 animator.pause();//停止动画播放
-             }
+                if(progress==seekBar.getMax()){   //滑动到最大值的时，结束动画
+                    animator.pause();//停止动画播放
+                }
             }
             //开始滑动时的处理
             @Override
@@ -67,15 +77,11 @@ public class player_layout extends AppCompatActivity implements View.OnClickList
         tv_progres=findViewById(R.id.tv_progress);
         tv_total=findViewById(R.id.tv_totla);
         btn_play=findViewById(R.id.btn_play);
-
         back=findViewById(R.id.back);
-
         intent =new Intent(this, MusicService.class);//打开服务的意图
         myServiceConn=new MyServiceConn();//实例化服务连接对象
         bindService(intent,myServiceConn,BIND_AUTO_CREATE);//绑定服务
-
         btn_play.setOnClickListener(this);
-
         back.setOnClickListener(this);
     }
 
@@ -165,18 +171,31 @@ public class player_layout extends AppCompatActivity implements View.OnClickList
         }
 
     }
-class MyServiceConn implements ServiceConnection{
+
+    class MyServiceConn implements ServiceConnection{
 
 
-    @Override
-    public void onServiceConnected(ComponentName name, IBinder service) {
-        musicControl=(MusicService.MusicControl)service;
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            musicControl=(MusicService.MusicControl)service;
 
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
     }
-
-    @Override
-    public void onServiceDisconnected(ComponentName name) {
-
+    private void updateUI(){
+        song_title=findViewById(R.id.song_title);
+        qingxidu=findViewById(R.id.qingxidu);
+        singer=findViewById(R.id.singer);
+        iv=findViewById(R.id.iv);
+        song_title.setText(this.music.getSongtitle());
+        qingxidu.setText(this.music.getQingxidu());
+        singer.setText(this.music.getSinger());
+        Glide.with(this)
+                .load(this.music.getImage())
+                .into(this.iv);
     }
-}
 }
