@@ -23,13 +23,13 @@ public class player_layout extends AppCompatActivity implements View.OnClickList
     private static SeekBar sb;
     private Button back;
     private static TextView tv_progres,tv_total;
-    private ImageView btn_play;
+    private ImageView btn_play,btn_pause,btn_continue;
     private MusicService.MusicControl musicControl;//音乐服务控制器Binder实例
     private MyServiceConn myServiceConn;//连接实例
     private Intent intent;//全局的意图对象
     private  boolean isUnbind=false;//记录服务是否被解绑
     public ObjectAnimator animator;
-    public int num=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,11 +67,17 @@ public class player_layout extends AppCompatActivity implements View.OnClickList
         tv_progres=findViewById(R.id.tv_progress);
         tv_total=findViewById(R.id.tv_totla);
         btn_play=findViewById(R.id.btn_play);
+        btn_pause=findViewById(R.id.btn_pause);
+        btn_continue=findViewById(R.id.btn_continue);
         back=findViewById(R.id.back);
+
         intent =new Intent(this, MusicService.class);//打开服务的意图
         myServiceConn=new MyServiceConn();//实例化服务连接对象
         bindService(intent,myServiceConn,BIND_AUTO_CREATE);//绑定服务
+
         btn_play.setOnClickListener(this);
+        btn_pause.setOnClickListener(this);
+        btn_continue.setOnClickListener(this);
         back.setOnClickListener(this);
     }
 
@@ -126,30 +132,24 @@ public class player_layout extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
 
-        btn_play.setOnClickListener((view)-> {
-            if(num==0){
-                btn_play.setImageResource(R.drawable.pause_filled);//播放
-                num=1;
+        switch (v.getId()){
+            case R.id.btn_play://播放
                 musicControl.play();
                 animator.start();
-            }
-            else if(num==1){
-                btn_play.setImageResource(R.drawable.play_filled);//暂停
-                num=2;
+                break;
+            case R.id.btn_pause://暂停
                 musicControl.pausePlay();
                 animator.pause();
-            }
-            else if(num==2){
-                btn_play.setImageResource(R.drawable.pause_filled);//继续
-                num=1;
+                break;
+            case R.id.btn_continue://继续
                 musicControl.continuePlay();
                 animator.start();
-            }
-        });
-        back.setOnClickListener((view)-> {
-            myUnbind(isUnbind);//退出
-            finish();
-        });
+                break;
+            case R.id.back://继续
+                myUnbind(isUnbind);
+                finish();
+                break;
+        }
     }
     //自定义解绑方法
     private  void myUnbind(boolean isUnbind){

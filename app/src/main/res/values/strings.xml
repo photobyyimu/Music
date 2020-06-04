@@ -2,5 +2,7 @@
     <string name="app_name">Music</string>
     <string name="BACK">后退</string>
     <string name="songtitle">歌曲名字</string>
+    <string name="qingxidu">品质</string>
+    <string name="singer">歌手</string>
 
 </resources>
