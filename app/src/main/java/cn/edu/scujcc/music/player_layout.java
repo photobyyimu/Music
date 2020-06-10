@@ -225,6 +225,8 @@ public class player_layout extends AppCompatActivity implements View.OnClickList
         Glide.with(this)
                 .load(this.music.getImage())
                 .into(this.iv);
+        text=findViewById(R.id.text);
+        text.setText(this.music.getGechi());
 
     }
 

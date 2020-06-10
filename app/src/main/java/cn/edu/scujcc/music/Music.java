@@ -11,7 +11,7 @@ public class Music implements Serializable {
     private String id;
     private String singer;
     private String star;
-
+    private String gechi;
     @Override
     public String toString() {
         return "Music{" +
@@ -22,11 +22,16 @@ public class Music implements Serializable {
                 ", id='" + id + '\'' +
                 ", singer='" + singer + '\'' +
                 ", star='" + star + '\'' +
+                ", sgechi='" + gechi + '\'' +
                 '}';
     }
 
     public String getSongtitle() {
         return songtitle;
+    }
+
+    public String getGechi() {
+        return gechi;
     }
 
     public String getQingxidu() {
@@ -55,6 +60,10 @@ public class Music implements Serializable {
 
     public void setSongtitle(String songtitle) {
         this.songtitle = songtitle;
+    }
+
+    public void setGechi(String gechi) {
+        this.songtitle = gechi;
     }
 
     public void setQingxidu(String qingxidu) {
@@ -88,11 +97,12 @@ public class Music implements Serializable {
         Music music = (Music) o;
         return Objects.equals(songtitle, music.songtitle) &&
                 Objects.equals(qingxidu, music.qingxidu) &&
-                Objects.equals(singer, music.singer);
+                Objects.equals(singer, music.singer)&&
+                Objects.equals(gechi, music.gechi);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(songtitle, qingxidu, singer);
+        return Objects.hash(songtitle, qingxidu, singer, gechi);
     }
 }
