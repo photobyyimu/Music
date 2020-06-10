@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 public class MusicRvAdapter extends RecyclerView.Adapter<MusicRvAdapter.MusicRowHolder> {
     private MusicLab lab = MusicLab.getInstance();
-    private MusicClickListener listener;
+    public MusicClickListener listener;
     private Context context;
     public MusicRvAdapter(Context context, MusicClickListener lis) {
         this.context = context;
