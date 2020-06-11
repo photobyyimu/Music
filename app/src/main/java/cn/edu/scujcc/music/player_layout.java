@@ -227,7 +227,9 @@ public class player_layout extends AppCompatActivity implements View.OnClickList
                 .into(this.iv);
         text=findViewById(R.id.text);
         text.setText(this.music.getGechi());
-
+        if (this.music.getGechi()==null){
+            text.setText("无歌词文件");
+        }
     }
 
 
